@@ -1,0 +1,12 @@
+extends partials/base
+
+block vars
+    - bodyClasses = 'index main'
+
+block customMeta
+    meta(name="og:title" content="My OG Title")
+
+block content
+    .container
+        h1.text-center Do something awesome!
+        img(src=getAsset("images/test.png"))

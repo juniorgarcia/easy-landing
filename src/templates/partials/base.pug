@@ -1,0 +1,17 @@
+block vars
+    - var bodyClasses = ''
+html(lang=APP_LANG)
+    head
+        title #{SITE_NAME}
+        meta(name="description" content=APP_META_DESCRIPTION)
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        block customMeta
+        block headScripts
+    body(class=bodyClasses)
+        block bodyScripts
+        block content
+    footer
+        block footerScripts
+        script(type="text/javascript" src="./scripts/app.js")
+        link(rel="stylesheet" href="./styles/app.css")
+        block footer
