@@ -12,6 +12,6 @@ html(lang=APP_LANG)
         block content
     footer
         block footerScripts
-        script(type="text/javascript" src="./scripts/app.js")
-        link(rel="stylesheet" href="./styles/app.css")
+        script(type="text/javascript" src=getAsset("scripts/app.js"))
+        link(rel="stylesheet" href=getAsset("styles/app.css"))
         block footer

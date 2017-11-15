@@ -1,22 +1,3 @@
-let mix = require('laravel-mix');
-mix.pug = require('laravel-mix-pug');
-require('dotenv').config();
-
-// Constants from .env
-const envVarsToGet = [
-    'SITE_NAME',
-    'SOURCE_PATH',
-    'DIST_PATH',
-    'APP_PATH',
-    'APP_LANG',
-    'APP_META_DESCRIPTION'
-];
-
-const appEnv = {};
-envVarsToGet.map((envToGet) => {
-    appEnv[envToGet] = process.env[envToGet];
-});
-
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -27,14 +8,11 @@ envVarsToGet.map((envToGet) => {
  | file for your application, as well as bundling up your JS files.
  |
  */
+let mix = require('laravel-mix'),
+    appEnv = require('./appEnv'),
+    templateFunctions = new (require('./templateFunctions'))(appEnv);
+    mix.pug = require('laravel-mix-pug');
 
-function getAsset(path) {
-    if (process.env.NODE_ENV === 'development') {
-        return `${path}`;
-    }
-
-    return  `./${appEnv.DIST_PATH}/${path}`;
-}
 
 mix.js(`${appEnv.SOURCE_PATH}/scripts/app.js`, `${appEnv.DIST_PATH}/scripts`)
    .sass(`${appEnv.SOURCE_PATH}/styles/app.scss`, `${appEnv.DIST_PATH}/styles`)
@@ -47,9 +25,7 @@ mix.js(`${appEnv.SOURCE_PATH}/scripts/app.js`, `${appEnv.DIST_PATH}/scripts`)
    })
     .pug(`${appEnv.SOURCE_PATH}/templates/*.pug`, appEnv.DIST_PATH, {
         seeds: null,
-        locals: Object.assign({}, {
-            getAsset
-        }, appEnv)
+        locals: Object.assign({}, templateFunctions.getFunctions(), appEnv)
     })
     .autoload({
         'jquery': ['$', 'window.jQuery', 'jQuery']

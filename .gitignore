@@ -170,3 +170,5 @@ fabric.properties
 # modules.xml
 # .idea/misc.xml
 # *.ipr
+
+mix-manifest.json

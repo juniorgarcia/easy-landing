@@ -1,11 +1,10 @@
-
 /**
  * As our first step, we'll pull in the user's webpack.mix.js
  * file. Based on what the user requests in that file,
  * a generic config object will be constructed for us.
  */
 
-require('../src/index');
+require('laravel-mix/src/index');
 require(Mix.paths.mix());
 
 /**
@@ -21,6 +20,6 @@ Mix.dispatch('init', Mix);
  * for Webpack. And that's all there is to it. Simple!
  */
 
-let WebpackConfig = require('../src/builder/WebpackConfig');
+let WebpackConfig = require('laravel-mix/src/builder/WebpackConfig');
 
 module.exports = new WebpackConfig().build();
