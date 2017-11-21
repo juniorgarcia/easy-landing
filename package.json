@@ -1,8 +1,9 @@
 {
   "name": "landing-pages-generator",
-  "version": "0.0.1",
-  "description": "Gerador de landing pages",
+  "version": "0.1.1-beta",
+  "description": "Landing Pages Generator",
   "license": "MIT",
+  "keywords": ["landing page", "simple generator", "html generator", "static generator", "yeoman-generator"],
   "dependencies": {
     "bootstrap": "4.0.0-beta.2",
     "dotenv": "^4.0.0",
