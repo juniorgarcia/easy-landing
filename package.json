@@ -1,9 +1,18 @@
 {
-  "name": "generator-landing-page",
-  "version": "0.1.3-beta",
+  "name": "generator-lp",
+  "version": "0.2.0-beta",
   "description": "Landing Pages Generator",
   "license": "MIT",
-  "keywords": ["landing page", "simple generator", "html generator", "static generator", "yeoman-generator"],
+  "keywords": ["landing page",
+    "landing page generator",
+    "landing page boilerplate",
+    "boilerplate",
+    "html boilerplate",
+    "simple generator",
+    "html generator",
+    "static generator",
+    "yeoman-generator"
+  ],
   "dependencies": {
     "bootstrap": "4.0.0-beta.2",
     "dotenv": "^4.0.0",
