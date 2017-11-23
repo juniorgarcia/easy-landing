@@ -1,7 +1,14 @@
-# Landing page generator
+# Generator LP
+
+![Generator LP Icon](https://raw.githubusercontent.com/juniorgarcia/lp-generator/master/lp-icon.png)
 
 We're here to allow you to develop static landing pages with an easy
 and consistent structure.
+
+## About the name
+LP is an alias to the old vinyl disks. It's just a pun with
+LP and Landing Pages! Thanks to [RoundIcons](https://roundicons.com/)
+for the icon!
 
 ## Special thanks
 The projects below were used to help us to develop this generator.

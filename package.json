@@ -13,6 +13,10 @@
     "static generator",
     "yeoman-generator"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juniorgarcia/generator-lp"
+  },
   "dependencies": {
     "bootstrap": "4.0.0-beta.2",
     "dotenv": "^4.0.0",
