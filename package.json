@@ -1,7 +1,7 @@
 {
   "name": "generator-lp",
-  "version": "0.2.0-beta",
-  "description": "Landing Pages Generator",
+  "version": "0.2.1-beta",
+  "description": "A simple and intelligent landing pages generator",
   "license": "MIT",
   "keywords": ["landing page",
     "landing page generator",
@@ -13,6 +13,11 @@
     "static generator",
     "yeoman-generator"
   ],
+  "author": {
+    "name": "Júnior Garcia",
+    "email": "itamarjr91@gmail.com",
+    "url": "https://github.com/juniorgarcia"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/juniorgarcia/generator-lp"
