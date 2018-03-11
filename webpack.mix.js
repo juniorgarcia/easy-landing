@@ -39,7 +39,9 @@ mix.js(`${appEnv.SOURCE_PATH}/scripts/app.js`, `${appEnv.DIST_PATH}/scripts`)
    })
     .pug(`${appEnv.SOURCE_PATH}/templates/*.pug`, appEnv.DIST_PATH, {
         seeds: null,
-        locals: Object.assign({}, templateFunctions.getFunctions(), appEnv)
+        locals: Object.assign({
+            DEVELOPMENT: !mix.inProduction(),
+        }, templateFunctions.getFunctions(), appEnv)
     })
     .autoload({
         'jquery': ['$', 'window.jQuery', 'jQuery']

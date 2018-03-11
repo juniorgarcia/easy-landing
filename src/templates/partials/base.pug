@@ -5,6 +5,8 @@ html(lang=APP_LANG)
         title #{SITE_NAME}
         meta(name="description" content=APP_META_DESCRIPTION)
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        if !DEVELOPMENT
+            base(href=BASE_URL)
         block customMeta
         block headScripts
     body(class=bodyClasses)
@@ -12,6 +14,6 @@ html(lang=APP_LANG)
         block content
     footer
         block footerScripts
-        script(type="text/javascript" src=getAsset("scripts/app.js"))
-        link(rel="stylesheet" href=getAsset("styles/app.css"))
+        script(type="text/javascript" src=getAsset("/scripts/app.js"))
+        link(rel="stylesheet" href=getAsset("/styles/app.css"))
         block footer

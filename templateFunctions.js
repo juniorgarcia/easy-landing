@@ -11,7 +11,6 @@
 let mix = require('laravel-mix');
 
 let TemplateFunctions = function(appEnv) {
-    this.appEnv = appEnv;
     this.functions = {
         getAsset: function (path) {
             return mix.inProduction() ? `${appEnv.BASE_URL}/${path}` : `${path}`;
