@@ -1,4 +1,15 @@
 /*
+ * Creating the main .env file.
+ */
+
+(() => {
+    let fs = require('fs');
+    if (!fs.existsSync('.env')) {
+        fs.copyFileSync('.env.example', '.env')
+    }
+})();
+
+/*
  |--------------------------------------------------------------------------
  | Mix Asset Management
  |--------------------------------------------------------------------------
@@ -8,6 +19,7 @@
  | file for your application, as well as bundling up your JS files.
  |
  */
+
 let mix = require('laravel-mix'),
     appEnv = require('./appEnv'),
     templateFunctions = new (require('./templateFunctions'))(appEnv);
@@ -17,7 +29,9 @@ let mix = require('laravel-mix'),
 mix.js(`${appEnv.SOURCE_PATH}/scripts/app.js`, `${appEnv.DIST_PATH}/scripts`)
    .sass(`${appEnv.SOURCE_PATH}/styles/app.scss`, `${appEnv.DIST_PATH}/styles`)
    .browserSync({
-       files: [`${appEnv.DIST_PATH}/**/*.html`],
+       files: [
+           `${appEnv.DIST_PATH}/**/*.html`
+       ],
        serveStatic: [appEnv.DIST_PATH],
        serveStaticOptions: {
            extensions: ["html"]
