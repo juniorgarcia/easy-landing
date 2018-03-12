@@ -1,5 +1,5 @@
 {
-  "name": "generator-easy-landing",
+  "name": "easy-landing",
   "version": "0.3.0-beta",
   "description": "A simple and intelligent landing page generator",
   "license": "MIT",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/juniorgarcia/generator-easy-landing"
+    "url": "https://github.com/juniorgarcia/easy-landing"
   },
   "dependencies": {
     "bootstrap": "^4",
