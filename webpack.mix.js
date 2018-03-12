@@ -23,29 +23,37 @@
 let mix = require('laravel-mix'),
     appEnv = require('./appEnv'),
     templateFunctions = new (require('./templateFunctions'))(appEnv);
-    mix.pug = require('laravel-mix-pug');
+mix.pug = require('laravel-mix-pug');
 
 
 mix.js(`${appEnv.SOURCE_PATH}/scripts/app.js`, `${appEnv.DIST_PATH}/scripts`)
-   .sass(`${appEnv.SOURCE_PATH}/styles/app.scss`, `${appEnv.DIST_PATH}/styles`)
-   .browserSync({
-       files: [
-           `${appEnv.DIST_PATH}/**/*.html`
-       ],
-       serveStatic: [appEnv.DIST_PATH],
-       serveStaticOptions: {
-           extensions: ["html"]
-       }
-   })
-    .pug(`${appEnv.SOURCE_PATH}/templates/*.pug`, appEnv.DIST_PATH, {
-        seeds: null,
-        locals: Object.assign({
-            DEVELOPMENT: !mix.inProduction(),
-        }, templateFunctions.getFunctions(), appEnv)
-    })
-    .autoload({
-        'jquery': ['$', 'window.jQuery', 'jQuery']
+    .sass(`${appEnv.SOURCE_PATH}/styles/app.scss`, `${appEnv.DIST_PATH}/styles`)
+    .browserSync({
+        files: [
+            `${appEnv.DIST_PATH}/**/*.html`
+        ],
+        serveStatic: [appEnv.DIST_PATH],
+        serveStaticOptions: {
+            extensions: ["html"]
+        }
     });
+
+// Enabling version if in production mode before processing the URL's for the templates.
+if (mix.inProduction()) {
+    mix.version();
+}
+
+mix.pug(`${appEnv.SOURCE_PATH}/templates/*.pug`, appEnv.DIST_PATH, {
+    seeds: null,
+    locals: Object.assign({
+        DEVELOPMENT: !mix.inProduction(),
+    }, templateFunctions.getFunctions(), appEnv)
+    }).autoload({
+        jquery: ['$', 'window.jQuery', 'jQuery'],
+        'popper.js': ['Popper']
+    })
+    .setPublicPath(path.resolve('./'));
+
 
 // Full API
 // mix.js(src, output);

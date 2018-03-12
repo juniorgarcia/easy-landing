@@ -1,3 +1,10 @@
+// HACK: This avoids the "Util not defined" error in case of using it on Bootstrap.
+// Uncomment the next line if this error occurs.
+// window.Util = require('bootstrap/js/src/util').default;
+
+// Always import Bootstrap modules from "dist" folder, not "src" folder, like the next line:
+// import "bootstrap/js/dist/dropdown";
+
 /* ========================================================================
  * DOM-based Routing
  * Based on http://goo.gl/EUTi53 by Paul Irish

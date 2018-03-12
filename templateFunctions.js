@@ -9,11 +9,24 @@
  */
 
 let mix = require('laravel-mix');
+let manifestMap = {};
+
+if (mix.inProduction()) {
+    manifestMap = require('./mix-manifest.json');
+}
 
 let TemplateFunctions = function(appEnv) {
     this.functions = {
         getAsset: function (path) {
-            return mix.inProduction() ? `${appEnv.BASE_URL}/${path}` : `${path}`;
+            let asset = "";
+
+            if (mix.inProduction()) {
+                asset = manifestMap[`/${appEnv.DIST_PATH}${path}`];
+            } else {
+                asset = path;
+            }
+
+            return asset;
         }
     };
 };
