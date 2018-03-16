@@ -1,18 +1,17 @@
 {
-  "name": "easy-landing",
-  "version": "0.3.0-beta",
-  "description": "A simple and intelligent landing page generator",
+  "name": "generator-savvy",
+  "version": "0.3.1-beta",
+  "description": "A simple and intelligent static web pages generator",
   "license": "MIT",
   "keywords": [
-    "landing page",
-    "landing page generator",
-    "landing page boilerplate",
     "boilerplate",
     "html boilerplate",
     "simple generator",
+    "landing page",
+    "landing page generator",
+    "landing page boilerplate",
     "html generator",
-    "static generator",
-    "yeoman-generator"
+    "static html generator"
   ],
   "author": {
     "name": "Júnior Garcia",
@@ -21,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/juniorgarcia/easy-landing"
+    "url": "https://github.com/juniorgarcia/savvy"
   },
   "dependencies": {
     "bootstrap": "^4",

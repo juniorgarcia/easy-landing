@@ -1,6 +1,6 @@
-# Easy Landing
+# Savvy
 
-We're here to allow you to develop static landing pages with an easy
+We're here to allow you to develop static HTML pages with an easy
 and consistent structure.
 
 ## Special thanks
