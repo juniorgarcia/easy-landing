@@ -10,7 +10,7 @@
 require('dotenv').config();
 const appEnv = {};
 
-const keysToGet = Object.keys(process.env).filter((key) => key.indexOf('MIX_') === 0);
+const keysToGet = Object.keys(process.env).filter((key) => key.startsWith('MIX_'));
 
 if (keysToGet.length > 0) {
     keysToGet.map((key) => {
