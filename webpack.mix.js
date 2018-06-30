@@ -20,11 +20,19 @@
  |
  */
 
+// This first steps are done separately to make use of the native Manifest of Laravel Mix
 let mix = require('laravel-mix'),
-    appEnv = require('./appEnv'),
-    templateFunctions = new (require('./templateFunctions'))(appEnv);
-mix.pug = require('laravel-mix-pug');
+    appEnv = require('./appEnv');
+mix.setPublicPath(appEnv.DIST_PATH);
 
+// Enabling version if in production mode before processing assets below.
+if (mix.inProduction()) {
+    mix.version();
+}
+
+let Manifest = require('laravel-mix/src/Manifest'),
+    TemplateFunctions = new (require('./TemplateFunctions'))(appEnv, new Manifest);
+    mix.pug = require('laravel-mix-pug');
 
 mix.js(`${appEnv.SOURCE_PATH}/scripts/app.js`, `${appEnv.DIST_PATH}/scripts`)
     .sass(`${appEnv.SOURCE_PATH}/styles/app.scss`, `${appEnv.DIST_PATH}/styles`)
@@ -36,24 +44,23 @@ mix.js(`${appEnv.SOURCE_PATH}/scripts/app.js`, `${appEnv.DIST_PATH}/scripts`)
         serveStaticOptions: {
             extensions: ["html"]
         }
+    })
+    .autoload({
+        jquery: ['$', 'window.jQuery', 'jQuery'],
+        'popper.js': ['Popper']
     });
-
-// Enabling version if in production mode before processing the URL's for the templates.
-if (mix.inProduction()) {
-    mix.version();
-}
 
 mix.pug(`${appEnv.SOURCE_PATH}/templates/*.pug`, appEnv.DIST_PATH, {
     seeds: null,
     locals: Object.assign({
         DEVELOPMENT: !mix.inProduction(),
-    }, templateFunctions.getFunctions(), appEnv)
-    }).autoload({
-        jquery: ['$', 'window.jQuery', 'jQuery'],
-        'popper.js': ['Popper']
+    }, appEnv, {
+        // Globally visible functions from inside of the .pug files.
+        getAsset: function (path) {
+            return TemplateFunctions.getAsset(path);
+        }
     })
-    .setPublicPath(path.resolve('./'));
-
+});
 
 // Full API
 // mix.js(src, output);
